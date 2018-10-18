@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mapper.IndexMapper">
+	<select id="getIndexMovie" resultType="com.model.SpInfo">
+		SELECT spId,spName,spAddr,spType,spAddrBm,spImg FROM spinfo WHERE spType=0 ORDER BY spId DESC LIMIT 0,9
+	</select>
+	
+	<select id="getOneMovie" resultType="String" parameterType="String">
+		SELECT CONCAT(b.jxAddr,'',a.spAddr) FROM spinfo a,spjx b WHERE a.spImg=#{spImg} AND a.spAddrBm=b.addrId
+	</select>
+	
+	<select id="getIndexTv" resultType="com.model.Dsj">
+		SELECT * FROM dsj ORDER BY dsjId DESC LIMIT 0,9
+	</select>
+	
+	<select id="getOneTV" resultType="com.model.Dsj" parameterType="String">
+		SELECT a.dsjId,a.dsjName,a.dsjHb,a.addrId,CONCAT(c.jxAddr,'',b.jsAddr) dsjAddr FROM dsj a,dsjjs b,spjx c 
+		WHERE a.dsjId=b.dsjId 
+		AND a.addrId=c.addrId
+		AND dsjHb=#{dsjHb} 
+		ORDER BY b.jsId ASC 
+	</select>
+	
+	<select id="showAllTv" resultType="com.model.Dsj">
+		SELECT * FROM dsj ORDER BY dsjId DESC
+	</select>
+	
+	<select id="getIndexVariety" resultType="com.model.SpInfo">
+		SELECT spId,spName,spAddr,spType,spAddrBm,spImg FROM spinfo WHERE spType=2 ORDER BY spId DESC LIMIT 0,9
+	</select>
+	
+	<select id="showAllVariety" resultType="com.model.SpInfo">
+		SELECT spId,spName,spAddr,spType,spAddrBm,spImg FROM spinfo WHERE spType=2 ORDER BY spId DESC
+	</select>
+	
+	<select id="searchDsj" parameterType="String" resultType="com.model.Dsj">
+		SELECT * FROM dsj WHERE dsjName LIKE #{dsjName}
+	</select>
+	
+	<select id="searchSp" parameterType="String" resultType="com.model.SpInfo">
+		SELECT * FROM spInfo WHERE spName LIKE #{spName}
+	</select>
+	
+</mapper>

@@ -1,0 +1,54 @@
+#title {
+    height: 40px;
+    line-height: 40px;
+    font-weight: bold;
+    color: #544747;
+    background: #f2f2f2;
+    border-bottom: 1px solid #C1C1C1;
+}
+
+body {
+	width: 100%;
+	max-width: 640px;
+	margin: 0 auto;
+}
+
+.all-movie {
+    list-style: none;
+    display: inline-block;
+    width: 100%;
+    margin-left: -40px;
+    margin-top: 5px;
+}
+
+li {
+    display: inline-block;
+    width: 32%;
+    height: 145px;
+    border-radius: 5px;
+    margin-left: 1%;
+    margin-bottom: 35px;
+}
+
+input[type="text"] {
+    border: none;
+    text-align: center;
+    width: 100%;
+}
+
+
+/* 鐢靛奖鎾斁椤� */
+#dybox {
+    width: 100%;
+    border: none;
+    height: 200px;
+}
+
+#ad {
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+#gg {
+	width: 100%;
+	height: auto;
+}

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>添加视频</title>
+<!-- <link type="text/css" rel="stylesheet" href="css/addsp.css" /> -->
+
+<script type="text/javascript" src="js/jquery.min.js"></script>
+<script type="text/javascript" src="js/jquery.form.js"></script>
+<script type="text/javascript" src="js/addsp.js"></script>
+</head>
+<body>
+	<!-- 视频解析地址存储 -->
+	<div class="jxaddr">
+		<input type="text" id="jx_name" placeholder="解析地址名称"/>
+		<input type="text" id="jx_addr" placeholder="解析地址"/>
+		<button onclick="addrCommit()">保存地址</button>
+	</div>
+<hr/>
+<!-- 视频信息 -->
+	<form id="sp-form">
+	
+		<div class="list1">
+			<span>视频类型：</span>
+			<select id="spType" name="spType" onchange="getSelectVal()">
+				<option value="-1"></option>
+				<option value="0">电影</option>
+				<!-- <option value="1">电视剧</option> -->
+				<option value="2">综艺</option>
+			</select>
+			
+			<span>解析地址：</span>
+			<select id="spAddrBm" name="spAddrBm" onchange="getAddrId()">
+				<option value="-1"></option>
+			</select>
+		</div>
+		
+		<div class="info">
+			<input type="text" id="spName" name="spName" placeholder="视频名称"/>
+			<input type="text" id="spAddr" name="spAddr" placeholder="视频地址">
+			<span>海报：</span>
+			<input type="file" name="spImg" id="spImg">
+		</div>
+		<button onclick="toCommit()">提交</button>
+	</form>
+<hr/>
+	<span>修改解析地址：</span>
+	<select id="upd-addr" onchange="getUpdAddrId()">
+		<option value="-1"></option>
+	</select>
+	<input type="text" id="addr-val"/>
+	<button onclick="toUpdate()">更新</button>
+<hr/>
+	<div>电视剧</div>
+	<div>
+		<input type="radio" name="dsj" value="电视剧"/>新增电视剧
+		<input type="radio" name="dsj" value="集数"/>新增集数
+	</div>
+	<!-- 添加电视剧 -->
+	<form id="addDsj" hidden="hidden">
+		<span>解析地址：</span>
+		<select id="addrId" name="addrId" onchange="getAddrId()">
+			<option value="-1"></option>
+		</select>
+		<input type="text" id="dsjName" name="dsjName" placeholder="新增电视剧名称">
+		<input type="text" id="dsjAddr" name="dsjAddr" placeholder="新增电视剧网址">
+		<input type="file" id="dsjHb" name="dsjHb">
+		<button onclick="commitDsj()">新增电视剧</button>
+	</form>
+	<!-- 添加集数 -->
+	<div id="addJs" hidden="hidden">
+		<span>选择电视剧</span>
+		<select id="selectDsj">
+			<option value="-1"></option>
+		</select>
+		<input type="text" id="jsAddr" placeholder="新增集数网址">
+		<button onclick="commitJs()">新增集数</button>
+	</div>
+<hr/>
+</body>
+</html>

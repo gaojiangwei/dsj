@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no" />
+<title>电视剧页</title>
+<link type="text/css" rel="stylesheet" href="css/index.css" />
+<link type="text/css" rel="stylesheet" href="css/tv.css" />
+
+<script type="text/javascript" src="js/jquery.min.js"></script>
+<script type="text/javascript" src="js/tv.js"></script>
+</head>
+<body>
+<div class="app">
+	<!-- 顶部导航 -->
+	<div class="top">
+		<span id="index" onclick="onIndex()">首页</span>
+		<span id="movie" onclick="onMovie()">电影</span>
+		<span id="tv">电视剧</span>
+		<span id="more" onclick="getMore()">...</span>
+	</div>
+	
+	<div id="gdsp" hidden="true">
+		<span id="variety" onclick="onVariety()">综艺</span>
+	</div>
+
+<div id="title">▍所有电视剧</div>
+	<!-- 所有电视剧 -->
+	<ul class="all-tv"></ul>
+</div>
+
+	<div id="ad">
+		<img src="/image/ad-tv.jpg" id="gg">
+	</div>
+</body>
+</html>

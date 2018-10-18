@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no" />
+<title>vip电影-首页</title>
+<link type="text/css" rel="stylesheet" href="css/index.css" />
+
+<script type="text/javascript" src="js/jquery.min.js"></script>
+<script type="text/javascript" src="js/index.js"></script>
+</head>
+<body>
+	<div class="app">
+		<!-- 顶部导航 -->
+		<div class="top">
+			<span id="index">首页</span>
+			<span id="movie" onclick="onMovie()">电影</span>
+			<span id="tv" onclick="onTv()">电视剧</span>
+			<span id="more" onclick="getMore()">...</span>
+		</div>
+		
+		<div id="gdsp" hidden="true">
+			<span id="variety" onclick="onVariety()">综艺</span>
+		</div>
+		
+		<!-- 搜索框 -->
+		<div class="search">
+			<input type="text" placeholder="全网搜" id="search-name">
+			<button id="search-commit" onclick="search()">搜索</button>
+		</div>
+	<ul class="searchAllSp"></ul>
+		<!-- 热播电影 -->
+		<div class="hot-movie">
+			<div class="hot-movie-title">
+				<span id="rbdy">热播电影</span>
+				<span id="movie-more" onclick="movieMore()">更多>></span>
+			</div>
+			<div class="hot-movie-value">
+				<!-- 第一层 -->
+				<div class="layer1">
+					<div id="movie_1" class="hot-m">
+						<img id="m_img_1" alt="" src="image/speed8.png" onclick="clickMovie(src)">
+						<input type="text" id="m_title_1" readonly value="速度与激情8">
+					</div>
+					<div id="movie_2" class="hot-m">
+						<img id="m_img_2" alt="" src="image/speed8.png" onclick="clickMovie(src)">
+						<input type="text" id="m_title_2" readonly value="速度与激情8">
+					</div>
+					<div id="movie_3" class="hot-m">
+						<img id="m_img_3" alt="" src="image/speed8.png" onclick="clickMovie(src)">
+						<input type="text" id="m_title_3" readonly value="速度与激情8">
+					</div>
+				</div>
+				<!-- 第二层 -->
+				<div class="layer2">
+					<div id="movie_4" class="hot-m">
+						<img id="m_img_4" alt="" src="image/speed8.png" onclick="clickMovie(src)">
+						<input type="text" id="m_title_4" readonly value="速度与激情8">
+					</div>
+					<div id="movie_5" class="hot-m">
+						<img id="m_img_5" alt="" src="image/speed8.png" onclick="clickMovie(src)">
+						<input type="text" id="m_title_5" readonly value="速度与激情8">
+					</div>
+					<div id="movie_6" class="hot-m">
+						<img id="m_img_6" alt="" src="image/speed8.png" onclick="clickMovie(src)">
+						<input type="text" id="m_title_6" readonly value="速度与激情8">
+					</div>
+				</div>
+				<!-- 第三层 -->
+				<div class="layer3">
+					<div id="movie_7" class="hot-m">
+						<img id="m_img_7" alt="" src="image/speed8.png" onclick="clickMovie(src)">
+						<input type="text" id="m_title_7" readonly value="速度与激情8">
+					</div>
+					<div id="movie_8" class="hot-m">
+						<img id="m_img_8" alt="" src="image/speed8.png" onclick="clickMovie(src)">
+						<input type="text" id="m_title_8" readonly value="速度与激情8">
+					</div>
+					<div id="movie_9" class="hot-m">
+						<img id="m_img_9" alt="" src="image/speed8.png" onclick="clickMovie(src)">
+						<input type="text" id="m_title_9" readonly value="速度与激情8">
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- 广告 -->
+		<div id="ad">
+			<img src="/image/ad-index-1.jpg" id="gg" onclick="goAd1()">
+		</div>
+		
+		<!-- 热播电视剧 -->
+		<div class="hot-tv">
+			<div class="hot-tv-title">
+				<span id='rbtv'>热播电视剧</span>
+				<span id='tv-more' onclick="tvMore()">更多>></span>
+			</div>
+			<div class="hot-tv-value">
+				<!-- 第一层 -->
+				<div class="layer1">
+					<div id="tv_1" class="hot-m">
+						<img id="t_img_1" alt="" src="image/speed8.png" onclick="clickTv(src)">
+						<input type="text" id="t_title_1" readonly value="速度与激情8">
+					</div>
+					<div id="tv_2" class="hot-m">
+						<img id="t_img_2" alt="" src="image/speed8.png" onclick="clickTv(src)">
+						<input type="text" id="t_title_2" readonly value="速度与激情8">
+					</div>
+					<div id="tv_3" class="hot-m">
+						<img id="t_img_3" alt="" src="image/speed8.png" onclick="clickTv(src)">
+						<input type="text" id="t_title_3" readonly value="速度与激情8">
+					</div>
+				</div>
+				<!-- 第二层 -->
+				<div class="layer2">
+					<div id="tv_4" class="hot-m">
+						<img id="t_img_4" alt="" src="image/speed8.png" onclick="clickTv(src)">
+						<input type="text" id="t_title_4" readonly value="速度与激情8">
+					</div>
+					<div id="tv_5" class="hot-m">
+						<img id="t_img_5" alt="" src="image/speed8.png" onclick="clickTv(src)">
+						<input type="text" id="t_title_5" readonly value="速度与激情8">
+					</div>
+					<div id="tv_6" class="hot-m">
+						<img id="t_img_6" alt="" src="image/speed8.png" onclick="clickTv(src)">
+						<input type="text" id="t_title_6" readonly value="速度与激情8">
+					</div>
+				</div>
+				<!-- 第三层 -->
+				<div class="layer3">
+					<div id="tv_7" class="hot-m">
+						<img id="t_img_7" alt="" src="image/speed8.png" onclick="clickTv(src)">
+						<input type="text" id="t_title_7" readonly value="速度与激情8">
+					</div>
+					<div id="tv_8" class="hot-m">
+						<img id="t_img_8" alt="" src="image/speed8.png" onclick="clickTv(src)">
+						<input type="text" id="t_title_8" readonly value="速度与激情8">
+					</div>
+					<div id="tv_9" class="hot-m">
+						<img id="t_img_9" alt="" src="image/speed8.png" onclick="clickTv(src)">
+						<input type="text" id="t_title_9" readonly value="速度与激情8">
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- 广告 -->
+		<div id="ad">
+			<img src="/image/ad-index-2.jpg" id="gg" onclick="goAd2()">
+		</div>
+		
+		<!-- 热播综艺 -->
+		<div class="hot-variety">
+			<div class="hot-variety-title">
+				<span id='rbzy'>热播综艺</span>
+				<span id='variety-more' onclick="varietyMore()">更多>></span>
+			</div>
+			<div class="hot-variety-value">
+				<!-- 第一层 -->
+				<div class="layer1">
+					<div id="variety_1" class="hot-m">
+						<img id="v_img_1" alt="" src="image/speed8.png" onclick="clickZy(src)">
+						<input type="text" id="v_title_1" readonly value="速度与激情8">
+					</div>
+					<div id="variety_2" class="hot-m">
+						<img id="v_img_2" alt="" src="image/speed8.png" onclick="clickZy(src)">
+						<input type="text" id="v_title_2" readonly value="速度与激情8">
+					</div>
+					<div id="variety_3" class="hot-m">
+						<img id="v_img_3" alt="" src="image/speed8.png" onclick="clickZy(src)">
+						<input type="text" id="v_title_3" readonly value="速度与激情8">
+					</div>
+				</div>
+				<!-- 第二层 -->
+				<div class="layer2">
+					<div id="variety_4" class="hot-m">
+						<img id="v_img_4" alt="" src="image/speed8.png" onclick="clickZy(src)">
+						<input type="text" id="v_title_4" readonly value="速度与激情8">
+					</div>
+					<div id="variety_5" class="hot-m">
+						<img id="v_img_5" alt="" src="image/speed8.png" onclick="clickZy(src)">
+						<input type="text" id="v_title_5" readonly value="速度与激情8">
+					</div>
+					<div id="variety_6" class="hot-m">
+						<img id="v_img_6" alt="" src="image/speed8.png" onclick="clickZy(src)">
+						<input type="text" id="v_title_6" readonly value="速度与激情8">
+					</div>
+				</div>
+				<!-- 第三层 -->
+				<div class="layer3">
+					<div id="variety_7" class="hot-m">
+						<img id="v_img_7" alt="" src="image/speed8.png" onclick="clickZy(src)">
+						<input type="text" id="v_title_7" readonly value="速度与激情8">
+					</div>
+					<div id="variety_8" class="hot-m">
+						<img id="v_img_8" alt="" src="image/speed8.png" onclick="clickZy(src)">
+						<input type="text" id="v_title_8" readonly value="速度与激情8">
+					</div>
+					<div id="variety_9" class="hot-m">
+						<img id="v_img_9" alt="" src="image/speed8.png" onclick="clickZy(src)">
+						<input type="text" id="v_title_9" readonly value="速度与激情8">
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- 广告 -->
+		<div id="ad">
+			<img src="/image/ad-index-3.jpg" id="gg" onclick="goAd3()">
+		</div>
+		
+		<div id="bottom">
+			<span>本站视频均来自其他视频网站，如有侵权，请联系（2808996284@qq.com）。本站只用于学习！</span>
+		</div>
+	</div>
+</body>
+</html>

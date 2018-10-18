@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mapper.AdminMapper">
+	<select id="getAddrVal" resultType="com.model.JxSp">
+		SELECT addrId,jxAddr,jxName FROM spjx ORDER BY addrId ASC
+	</select>
+	
+	<insert id="addrCommit" parameterType="com.model.JxSp" useGeneratedKeys="true" keyProperty="addrId">
+	  insert into spjx(jxAddr, jxName) values(#{jxAddr}, #{jxName})
+	</insert>
+	
+	<insert id="insertSpInfo" parameterType="com.model.SpInfo" useGeneratedKeys="true" keyProperty="spId">
+		insert into spinfo(spName, spAddr, spType, spAddrBm, spImg) values(#{spName}, #{spAddr}, #{spType}, #{spAddrBm}, #{spImg})
+	</insert>
+	
+	<update id="toUpdate" parameterType="com.model.JxSp">
+		UPDATE spjx SET jxAddr=#{jxAddr} WHERE addrId=#{addrId}
+	</update>
+	
+	<insert id="addDsj" parameterType="com.model.Dsj" useGeneratedKeys="true" keyProperty="dsjId">
+		insert into dsj(dsjName, dsjHb, addrId) values(#{dsjName}, #{dsjHb}, #{addrId})
+	</insert>
+	<insert id="addJs" parameterType="com.model.Dsj" useGeneratedKeys="true" keyProperty="dsjId">
+		insert into dsjjs(dsjId, jsAddr) values(#{dsjId}, #{dsjAddr})
+	</insert>
+	
+	<select id="getAllDsj" resultType="com.model.Dsj">
+		select * from dsj order by dsjId desc
+	</select>
+</mapper>

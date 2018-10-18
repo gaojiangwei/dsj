@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no" />
+<title>综艺页</title>
+<link type="text/css" rel="stylesheet" href="css/index.css" />
+<link type="text/css" rel="stylesheet" href="css/variety.css" />
+
+<script type="text/javascript" src="js/jquery.min.js"></script>
+<script type="text/javascript" src="js/variety.js"></script>
+</head>
+<body>
+<div class="app">
+	<!-- 顶部导航 -->
+	<div class="top">
+		<span id="index" onclick="onIndex()">首页</span>
+		<span id="movie" onclick="onMovie()">电影</span>
+		<span id="tv" onclick="onTv()">电视剧</span>
+		<span id="more" onclick="getMore()">...</span>
+	</div>
+	
+	<div id="gdsp" hidden="true">
+		<span id="variety">综艺</span>
+	</div>
+
+<div id="title">▍所有综艺</div>
+	<!-- 所有综艺 -->
+	<ul class="all-variety"></ul>
+	
+	<div id="ad">
+		<img src="/image/ad-zy.jpg" id="gg">
+	</div>
+</div>
+</body>
+</html>

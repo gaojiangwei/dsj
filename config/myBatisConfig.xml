@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?> 
+<!DOCTYPE configuration  
+PUBLIC "-//mybatis.org//DTD Config 3.0//EN"  
+"http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+	<!-- 配置延迟加载 : mybatis默认没有开启延迟加载-->
+	<settings>
+		<!-- 打开延迟加载的开关 -->
+		<setting name="lazyLoadingEnabled" value="true"/>
+		<!-- 将积极加载改为按需加载 -->
+		<setting name="aggressiveLazyLoading" value="false"/>
+	</settings>
+
+	<!-- mybatis目前最新版本为3.4 -->
+	<!-- <typeAliases>
+		采用批量扫描的方式配置别名：在mapper文件里操作的时候可以直接用com.model包下的类名或者类名首字母小写做别名，
+		例如：com.model.User 别名为User或者user，无需全类名
+		<package name="com.model"/>
+	</typeAliases> -->
+	
+	<!-- mapper不需要在这里配置，只需要将mapper.java文件和mapper.xml文件同名并且放在同一个目录中即可。或者用下述方法配置(还有其他配置方法)：
+		<mappers>
+			<mapper resource="sqlmap/User.xml" />
+			<mapper resource="mapper/UserMapper.xml" />
+			<mapper resource="mapper/OrdersMapper.xml" />
+		</mappers>
+	 -->
+</configuration>

@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:c="http://www.springframework.org/schema/c"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.2.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.2.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.2.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.2.xsd">
+
+	<!-- 配置自动扫描的类，除controller之外的东西由spring管理 -->
+	<context:component-scan base-package="com" use-default-filters="false">
+		<context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
+	</context:component-scan>
+	
+		<!-- 加载db.properties文件中的内容，db.properties文件中key命名要有一定的特殊规则 -->
+		<context:property-placeholder location="classpath:db.properties" />
+		
+		<!-- 配置c3p0数据源 （连接池）-->
+		<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
+			<property name="driverClass" value="${jdbc.driver}" />
+			<property name="jdbcUrl" value="${jdbc.url}" />
+			<property name="user" value="${jdbc.username}" />
+			<property name="password" value="${jdbc.password}" />
+			<property name="maxIdleTime" value="${jdbc.maxIdleTime}"/>
+			<property name="maxPoolSize" value="${jdbc.maxPoolSize}"/>
+			<property name="initialPoolSize" value="${jdbc.initialPoolSize}"/>
+			<property name="minPoolSize" value="${jdbc.minPoolSize}"/>
+			<property name="idleConnectionTestPeriod" value="${jdbc.idleConnectionTestPeriod}"/>
+		</bean>
+		
+		<!-- 配置sqlSessionFactory -->
+		<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+			<property name="dataSource" ref="dataSource"></property>
+			<!-- 配置mybatis的配置文件 -->
+			<property name="configLocation" value="classpath:myBatisConfig.xml"></property>
+		</bean>
+		
+		<!-- 事务管理器 -->
+		<bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+			<property name="dataSource" ref="dataSource"></property>
+		</bean>
+		<!-- 开启事务的注解驱动 -->
+		<tx:annotation-driven transaction-manager="transactionManager"/>
+	
+	
+	<!-- 拦截器 -->
+	<!-- <mvc:interceptors>
+		多个拦截器顺序执行（拦截器链）
+		<mvc:interceptor>
+			表示拦截所有的url，包括子url路径
+			<mvc:mapping path="/**/*.html" />
+			<mvc:exclude-mapping path="/**/hello.html"/>
+			<bean class="com.utils.LoginInterceptor"></bean>
+		</mvc:interceptor>
+	</mvc:interceptors> -->
+</beans>

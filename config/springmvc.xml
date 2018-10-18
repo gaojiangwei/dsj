@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:c="http://www.springframework.org/schema/c"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.2.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.2.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.2.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.2.xsd">
+		
+		<!-- 自动扫描的类, springMVC只扫描controller -->
+		<context:component-scan base-package="com">
+			<context:include-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
+		</context:component-scan>
+		
+		<!-- 静态资源不扫描, 两行配置缺一不可 -->
+		<!-- 下面有详细配置：<mvc:annotation-driven></mvc:annotation-driven> -->
+		<mvc:default-servlet-handler/>
+		<!-- WEB-INF下的静态资源配置
+		<mvc:resources mapping="/css/**" location="/WEB-INF/css/" />
+		<mvc:resources mapping="/js/**" location="/WEB-INF/js/" /> -->
+		
+		<!-- 配置mapper扫描器 -->
+		<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+			<!-- 扫描包路径，如果需要扫描多个包，中间使用半角逗号隔开 -->
+			<property name="basePackage" value="com.mapper"></property>
+			<property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"></property>
+			<!-- spring4弃用配置：<property name="sqlSessionFactory" ref="sqlSessionFactory" />-->
+		</bean>	
+		
+		<!-- 文件上传 -->
+		<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+			<!-- 设置上传文件的最大尺寸为500MB -->
+			<property name="maxUploadSize">
+				<value>524288000</value>
+			</property>
+		</bean>
+		
+		<!-- 启用注解驱动，并使springmvc可以处理json,springmvc本身无法处理json -->
+		<mvc:annotation-driven>
+	        <mvc:message-converters register-defaults="true">
+	        	<!-- MappingJackson2HttpMessageConverter 在spring3.0中是MappingJacksonHttpMessageConverter -->
+	            <bean class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">  
+	                <property name="supportedMediaTypes">  
+	                    <list>  
+	                        <value>text/html;charset=UTF-8</value>
+	                        <value>application/json;charset=UTF-8</value> 
+	                    </list>  
+	                </property>  
+	            </bean>
+	        </mvc:message-converters>
+	    </mvc:annotation-driven>
+    
+</beans>

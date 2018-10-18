@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mapper.MovieMapper">
+
+	<select id="showAllMovie" resultType="com.model.SpInfo">
+		SELECT spId,spName,spAddr,spType,spAddrBm,spImg FROM spinfo WHERE spType=0 ORDER BY spId DESC
+	</select>
+	
+</mapper>
